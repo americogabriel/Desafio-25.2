@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>dadadsdadad</h1>
+    <form action="{% url 'url_buscar'%}" method="POST">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <button type="submit">Buscar</button>
+    </form>
 </body>
 </html>
