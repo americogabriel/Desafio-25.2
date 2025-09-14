@@ -11,10 +11,10 @@
     </header>
     <div class="container">
         {% for avaliacao in avaliacoes%}
-            <h2>{{avaliacao.nomemusica}}</h2>
+        <a href="{% url 'url_atualizar' avaliacao.id%}"><h2>{{avaliacao.nomemusica}}</h2></a>
             <h3>{{avaliacao.estrelas}}</h3>
             <a href="{% url 'url_deletar' avaliacao.id%}">Deletar</a>
-            <a href="{% url 'url_atualizar' avaliacao.id%}">Alterar</a>
+            <a href="{% url 'url_atualizar' avaliacao.id%}"></a>
         {% endfor %}
     </div>
 </body>
