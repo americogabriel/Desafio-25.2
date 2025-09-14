@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from .form import PesquisaForm
 import requests
 from .models import Avaliacao, Favoritas
+from django.views.generic import ListView, UpdateView , DeleteView
 
 def home(request):
     data = {}
@@ -44,6 +45,11 @@ def favoritar(request,pk):
         banco = {}
         banco['musica'] = response.json()
         return render(request,'app/perfil.html',banco)
+
+class listar(ListView):
+    model = Avaliacao
+    template_name = 'app/avaliacaolist.html'
+    context_object_name = 'avaliacoes'
 
 
         
