@@ -18,9 +18,10 @@ def buscar(request):
 
 def perfilmusica(request,pk):
     if request.method == 'POST':
+        nome = request.POST.get('nome_musica')
         estrelas = request.POST.get('estrelas')
         opniao = request.POST.get('opniao')
-        create = Avaliacao.objects.create(estrelas = estrelas, descricao = opniao)
+        create = Avaliacao.objects.create(estrelas = estrelas, descricao = opniao, nomemusica = nome)
     response = requests.get(f'https://api.deezer.com/track/{pk}')
     banco = {}
     banco['musica'] = response.json()
