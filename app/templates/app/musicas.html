@@ -14,6 +14,7 @@
         }
 
         header {
+            position: relative;
             text-align: center;
             padding: 30px 0;
             background: linear-gradient(135deg, #ffcc66 10%, #ff9933 40%, #e67300 80%);
@@ -26,7 +27,19 @@
             font-size: 28px;
             font-weight: bold;
         }
-
+        .botao-header {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 12px 28px;
+            border-radius: 30px;
+            background: #ff8c00;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -57,6 +70,7 @@
 <body>
     <header>
         <h1>Musicas Encontradas</h1>
+        <a href="{%url 'url_home'%}" class="botao-header">Pesquisar</a>
     </header>
 
     <div class="container">

@@ -3,16 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Excluir Avaliação</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #0d0d0d; 
+            font-family: "Trebuchet MS", sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            width: 100%;
+            padding: 40px 0; 
+            text-align: center;
+            background: linear-gradient(135deg, #ffcc66 10%, #ff9933 35%, #e67300 70%);
+            color: black;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.4);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .caixa-excluir {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.4);
+            text-align: center;
+            color: white;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .caixa-excluir h1 {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #ffcc66;
+        }
+
+        .botoes {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        button, .cancelar {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        button {
+            background: #ff8c00;
+            color: black;
+        }
+
+        .cancelar {
+            background: #333333;
+            color: white;
+        }
+
+    </style>
 </head>
 <body>
-    <header>Excluir</header>
+    <header>
+        <h1>Excluir 🗑️</h1>
+    </header>
     <div class="container">
-        <form method="POST">
-        {% csrf_token %}
-        <h1> Deseja Excluir sua avaliacao: {{avaliacao}}  ? </h1>
-        <button type="submit">Deletar</button>
-        </form>
+        <div class="caixa-excluir">
+            <form method="POST">
+                {% csrf_token %}
+                <h1>Deseja excluir sua avaliação: <br> {{ avaliacao }} ?</h1>
+                <div class="botoes">
+                    <button type="submit">Deletar</button>
+                    <a href="{% url 'url_listar' %}" class="cancelar">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
