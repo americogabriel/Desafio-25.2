@@ -51,7 +51,19 @@
             font-weight: bold;
             text-decoration: none;
         }
-
+        .botao-header-fav {
+            position: absolute;
+            right: 180px; 
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 12px 28px;
+            border-radius: 30px;
+            background: #ff8c00;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
         .container {
             flex: 1;
             display: flex;
@@ -95,6 +107,7 @@
         <h1>music researcher 🔍</h1>
         <h3>Busque uma Música</h3>
         <a href="{% url 'url_listar' %}" class="botao-header">Avaliações</a>
+        <a href="{% url 'url_listarfavorita'%}" class="botao-header-fav">Favoritas</a>
     </header>
 
     <div class="container">
