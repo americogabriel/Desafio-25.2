@@ -10,3 +10,7 @@ class Avaliacao(models.Model):
 
     def __str__(self):
         return self.nomemusica
+    
+class Favoritas(models.Model):
+    artista = models.CharField(max_length= 80)
+    musica = models.CharField(max_length= 100)

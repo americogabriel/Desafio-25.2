@@ -113,6 +113,11 @@
                 </audio>
             </div>
             <div class="music-info">
+                <form  action="{%url 'url_favoritar' musica.id%}"  method="POST">
+                    <h3>Favoritar? </h3>
+                    <input type="checkbox" name="favorito" value="true">
+                    <button type="post">Favoritar</button>
+                </form>
                 <h2>Artista: {{musica.artist.name}}</h2>
                 <h2>Título da obra: {{musica.title}}</h2>
                 <h2>Duração: {{musica.duration}} segundos</h2>

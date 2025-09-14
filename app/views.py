@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .form import PesquisaForm
 import requests
-from .models import Avaliacao
+from .models import Avaliacao, Favoritas
 
 def home(request):
     data = {}
@@ -26,6 +26,18 @@ def perfilmusica(request,pk):
     banco = {}
     banco['musica'] = response.json()
     return render(request,'app/perfil.html',banco)
+
+
+def favoritar(request,pk):
+    checkbox = request.POST.get('favorito')
+    if checkbox:
+        response = requests.get(f'https://api.deezer.com/track/{pk}')
+        data = response.json()
+        return HttpResponse(data['title'])
+    else:
+        pass
+        
+
 
     
 
