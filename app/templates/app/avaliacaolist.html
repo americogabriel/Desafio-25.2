@@ -13,6 +13,7 @@
         {% for avaliacao in avaliacoes%}
             <h2>{{avaliacao.nomemusica}}</h2>
             <h3>{{avaliacao.estrelas}}</h3>
+            <a href="{% url 'url_deletar' avaliacao.id%}">Deletar</a>
         {% endfor %}
     </div>
 </body>

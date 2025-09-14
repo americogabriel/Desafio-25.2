@@ -4,6 +4,7 @@ from .form import PesquisaForm
 import requests
 from .models import Avaliacao, Favoritas
 from django.views.generic import ListView, UpdateView , DeleteView
+from django.urls import reverse_lazy
 
 def home(request):
     data = {}
@@ -52,7 +53,13 @@ class listar(ListView):
     context_object_name = 'avaliacoes'
 
 
-        
+class deletar(DeleteView):
+    model = Avaliacao
+    template_name = 'app/remover.html'
+    context_object_name = 'avaliacao'
+    success_url = reverse_lazy('url_listar')
+
+
 
 
     
