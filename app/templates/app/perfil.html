@@ -3,28 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Detalhes da Música</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Trebuchet MS", sans-serif;
+            background-color: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #ffcc66;
+        }
+        .wraper{
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            background: #111;
+            border-radius: 15px;
+            padding: 30px;
+            flex: 1;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.5);
+            gap: 20px;
+        }
+        .music-image {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .music-image img {
+            width: 100%;
+            border-radius: 12px;
+        }
+        .music-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+        .music-info h2, .music-info a {
+            margin: 0;
+            font-size: 16px;
+        }
+        .music-info a {
+            color: #ffcc66;
+            text-decoration: underline;
+        }
+        .audio-player {
+            margin-top: 15px;
+            width: 100%;
+        }
+        .classificacao {
+            background-color: #111;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: left;
+            width: 300px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .classificacao h3 {
+            margin-bottom: 10px;
+            color: #ffcc66;
+        }
+        .classificacao input[type="number"],
+        .classificacao textarea {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            background: #111;
+            color: #ffcc66;
+        }
+        .classificacao textarea::placeholder {
+            color: #aaa;
+        }
+        .classificacao button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: #ff8c00;
+            color: black;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+    </style>
 </head>
 <body>
-    <div class="container">
-        <img src="{{musica.album.cover_medium}}">
-        <h2>Artista: {{musica.artist.name}}</h2>
-        <h2>Titúlo da obra: {{musica.title}}</h2>
-        <h2>Duração: {{musica.duration}} segundos</h2>
-        <audio controls>
-            <source src="{{musica.preview}}" type="audio/mpeg">
-        </audio>
-        <h2>Link Deezer: <a href="{{musica.link}}">{{musica.link}}</a></h2>
-    </div>
-    
-    <div class="classificacao">
-        <form method="POST">
-            {% csrf_token %}
-           <h3>Estrelas:</h3> Estrelas:<input type="number" min="0" max="5" name="estrelas">
-            <h3>Opnião:</h3><textarea name="opniao" rows="4" cols="40" placeholder="digite aqui..." ></textarea>
-            <input type="hidden" name="nome_musica" value="{{musica.title}}{{musica.artist.name}}">
-            <button type="submit">Cadastrar</button>
-        </form>
+    <div class="wraper">
+        <div class="container">
+            <div class="music-image">
+                <img src="{{musica.album.cover_medium}}">
+                <audio class="audio-player" controls>
+                    <source src="{{musica.preview}}" type="audio/mpeg">
+                </audio>
+            </div>
+            <div class="music-info">
+                <h2>Artista: {{musica.artist.name}}</h2>
+                <h2>Título da obra: {{musica.title}}</h2>
+                <h2>Duração: {{musica.duration}} segundos</h2>
+                <h2>Link Deezer: <a href="{{musica.link}}">{{musica.link}}</a></h2>
+            </div>
+        </div>
+        <div class="classificacao">
+            <form method="POST">
+                {% csrf_token %}
+                <h3>Estrelas:</h3>
+                <input type="number" min="0" max="5" name="estrelas">
+                <h3>Opinião:</h3>
+                <textarea name="opniao" rows="4"></textarea>
+                <input type="hidden" name="nome_musica" value="{{musica.title}}{{musica.artist.name}}">
+                <br>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
