@@ -63,6 +63,12 @@ class deletar(DeleteView):
     context_object_name = 'avaliacao'
     success_url = reverse_lazy('url_listar')
 
+class deletarfavoritas(DeleteView):
+    model = Favoritas
+    template_name = 'app/removerfav'
+    context_object_name = 'favoritas'
+    success_url = reverse_lazy('url_listar')
+
 class update(UpdateView):
     model = Avaliacao
     template_name = 'app/update.html'
