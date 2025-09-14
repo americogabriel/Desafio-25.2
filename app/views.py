@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .form import PesquisaForm,Estrelas
+from .form import PesquisaForm
 import requests
+from .models import Avaliacao
 
 def home(request):
     data = {}
@@ -16,10 +17,13 @@ def buscar(request):
     return render(request,'app/musicas.html',banco)
 
 def perfilmusica(request,pk):
+    if request.method == 'POST':
+        estrelas = request.POST.get('estrelas')
+        opniao = request.POST.get('opniao')
+        create = Avaliacao.objects.create(estrelas = estrelas, descricao = opniao)
     response = requests.get(f'https://api.deezer.com/track/{pk}')
     banco = {}
     banco['musica'] = response.json()
-    banco['form'] = Estrelas
     return render(request,'app/perfil.html',banco)
 
     

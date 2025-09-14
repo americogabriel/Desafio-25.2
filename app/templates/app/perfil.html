@@ -18,8 +18,8 @@
     </div>
     <div class="classificacao">
         <form method="POST">
-            {% csrf_token %}
-            {{form.as_p}}
+           <h3>Estrelas:</h3> Estrelas:<input type="number" min="0" max="5" name="estrelas">
+            <h3>Opnião:</h3><textarea name="opniao" rows="4" cols="40" placeholder="digite aqui..." ></textarea>
         </form>
     </div>
 </body>
