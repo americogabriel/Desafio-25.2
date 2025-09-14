@@ -55,7 +55,7 @@
         }
         .music-info a {
             color: #ffcc66;
-            text-decoration: underline;
+            text-decoration: none;
         }
         .audio-player {
             margin-top: 15px;
@@ -114,6 +114,7 @@
             </div>
             <div class="music-info">
                 <form  action="{%url 'url_favoritar' musica.id%}"  method="POST">
+                    {% csrf_token %}
                     <h3>Favoritar? </h3>
                     <input type="checkbox" name="favorito" value="true">
                     <button type="post">Favoritar</button>

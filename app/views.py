@@ -32,10 +32,20 @@ def favoritar(request,pk):
     checkbox = request.POST.get('favorito')
     if checkbox:
         response = requests.get(f'https://api.deezer.com/track/{pk}')
+        banco = {}
+        banco['musica'] = response.json()
         data = response.json()
-        return HttpResponse(data['title'])
+        nomemusica = data['title']
+        nomeartista = data['artist']['name']
+        create = Favoritas.objects.create(artista = nomeartista, musica= nomemusica)
+        return render(request,'app/perfil.html',banco)
     else:
-        pass
+        response = requests.get(f'https://api.deezer.com/track/{pk}')
+        banco = {}
+        banco['musica'] = response.json()
+        return render(request,'app/perfil.html',banco)
+
+
         
 
 

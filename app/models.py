@@ -14,3 +14,10 @@ class Avaliacao(models.Model):
 class Favoritas(models.Model):
     artista = models.CharField(max_length= 80)
     musica = models.CharField(max_length= 100)
+    class Meta:
+        verbose_name_plural = "Favoritas"
+
+    def __str__(self):
+        return self.musica    
+
+    
