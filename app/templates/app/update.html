@@ -71,7 +71,7 @@
             font-size: 18px;
         }
 
-        .descricao, .estrelas {
+        .descricao, .estrelas , .nomeobra{
             width: 88%;
             padding: 10px;
             border-radius: 12px;
@@ -101,6 +101,8 @@
     <div class="container">
         <form method="post">
             {% csrf_token %}
+            <h2>Nome da obra</h2>
+            {{ form.nomemusica|add_class:"nomeobra"}}
             <h2>Descrição da avaliação</h2>
             {{ form.descricao|add_class:"descricao" }}
             <h2>Estrelas 🌟</h2>
