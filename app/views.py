@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .form import PesquisaForm
 import requests
 
@@ -10,6 +10,12 @@ def home(request):
 
 def buscar(request):
     query = request.POST.get('pesquisa')
-    reponse = requests.get(f"https://api.deezer.com/search?q={query}")
-    dados = reponse.json()
-    return render(request,'app/musicas.html',dados)
+    response = requests.get(f"https://api.deezer.com/search?q={query}")
+    banco = {}
+    banco['dados'] = response.json()
+    return render(request,'app/musicas.html',banco)
+
+
+
+
+
