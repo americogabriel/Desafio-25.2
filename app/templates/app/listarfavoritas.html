@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritas</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #0d0d0d; 
+            font-family: "Trebuchet MS", sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            position: relative;
+            width: 100%;
+            padding: 40px 0; 
+            text-align: center;
+            background: linear-gradient(135deg, #ffcc66 10%, #ff9933 35%, #e67300 70%);
+            color: black;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.4);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .btn-voltar {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 12px 28px;
+            border-radius: 25px;
+            background: #ff8c00;
+            color: black;
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .caixa-favoritas {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.4);
+            width: 70%;
+            max-width: 800px;
+        }
+
+        .avaliacao {
+            background: #262626;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            color: white;
+            box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+        }
+
+        .avaliacao h2 {
+            margin: 0;
+            font-size: 20px;
+            color: black;
+        }
+
+        .avaliacao h3 {
+            margin: 8px 0 12px;
+            font-size: 16px;
+            font-weight: normal;
+            color: #cccccc;
+        }
+
+        .avaliacao a {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 8px 18px;
+            border-radius: 25px;
+            background: #ff8c00;
+            color: black;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Favoritas 🌟</h1>
+        <a href="{%url 'url_home'%}" class="btn-voltar">Voltar</a>
+    </header>
+    <div class="container">
+        <div class="caixa-favoritas">
+            {% for favorita in favoritas %}
+            <div class="avaliacao">
+                <h2>👤 {{ favorita.artista }}</h2></a>
+                <h3>📀 {{ favorita.musica }}</h3>
+            </div>
+            {% empty %}
+            <p style="color:white; text-align:center;">Nenhuma avaliação encontrada.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

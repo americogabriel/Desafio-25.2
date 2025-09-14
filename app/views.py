@@ -52,6 +52,10 @@ class listar(ListView):
     template_name = 'app/avaliacaolist.html'
     context_object_name = 'avaliacoes'
 
+class listarfavoritas(ListView):
+    model = Favoritas
+    template_name = 'app/listarfavoritas.html'
+    context_object_name = 'favoritas'
 
 class deletar(DeleteView):
     model = Avaliacao
@@ -64,6 +68,8 @@ class update(UpdateView):
     template_name = 'app/update.html'
     form_class = AtualizarForm
     success_url = reverse_lazy('url_listar')
+
+
 
 
 
