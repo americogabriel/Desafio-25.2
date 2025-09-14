@@ -107,6 +107,7 @@
             <div class="avaliacao">
                 <h2>👤 {{ favorita.artista }}</h2></a>
                 <h3>📀 {{ favorita.musica }}</h3>
+                <a href="{%url 'url_deletarfavorita' favorita.id%}">Remover</a>
             </div>
             {% empty %}
             <p style="color:white; text-align:center;">Nenhuma avaliação encontrada.</p>

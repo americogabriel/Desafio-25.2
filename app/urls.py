@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, buscar , perfilmusica , favoritar , listar , deletar , update , listarfavoritas
+from .views import home, buscar , perfilmusica , favoritar , listar , deletar , update , listarfavoritas , deletarfavoritas
 
 urlpatterns = [
     path('',home,name = 'url_home'),
@@ -9,5 +9,6 @@ urlpatterns = [
     path('listar/',listar.as_view(), name='url_listar'),
     path('deletar/<int:pk>',deletar.as_view(), name='url_deletar'),
     path('atualizar/<int:pk>',update.as_view(), name = 'url_atualizar'),
-    path('favorita/',listarfavoritas.as_view(), name= 'url_listarfavorita')
+    path('favorita/',listarfavoritas.as_view(), name= 'url_listarfavorita'),
+    path('removerfav/<int:pk>',deletarfavoritas.as_view(), name= 'url_deletarfavorita')
 ]
