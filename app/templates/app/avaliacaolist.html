@@ -14,6 +14,7 @@
             <h2>{{avaliacao.nomemusica}}</h2>
             <h3>{{avaliacao.estrelas}}</h3>
             <a href="{% url 'url_deletar' avaliacao.id%}">Deletar</a>
+            <a href="{% url 'url_atualizar' avaliacao.id%}">Alterar</a>
         {% endfor %}
     </div>
 </body>

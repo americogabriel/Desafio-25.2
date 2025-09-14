@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .form import PesquisaForm
+from .form import PesquisaForm , AtualizarForm
 import requests
 from .models import Avaliacao, Favoritas
 from django.views.generic import ListView, UpdateView , DeleteView
@@ -59,6 +59,11 @@ class deletar(DeleteView):
     context_object_name = 'avaliacao'
     success_url = reverse_lazy('url_listar')
 
+class update(UpdateView):
+    model = Avaliacao
+    template_name = 'app/update.html'
+    form_class = AtualizarForm
+    success_url = reverse_lazy('url_listar')
 
 
 
