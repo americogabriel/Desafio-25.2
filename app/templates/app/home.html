@@ -101,7 +101,7 @@
         <div class="form-box">
             <form action="{% url 'url_buscar'%}" method="POST">
                 {% csrf_token %}
-                {{ form.pesquisa|add_class:"input" }}
+                {{form.pesquisa|add_class:"input"}}
                 <button type="submit">Buscar</button>
             </form>
         </div>
