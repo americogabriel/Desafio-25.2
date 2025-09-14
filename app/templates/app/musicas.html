@@ -10,11 +10,8 @@
         <h1>Musicas Encontradas</h1>
     </header>
     {% for musica in dados.data%}
-        <img src="{{musica.album.cover_medium}}" alt="{{musica.album.title}}">
+        <a href="{%url 'url_perfil' musica.id %}"><img src="{{musica.album.cover_medium}}" alt="{{musica.album.title}}"></a>
         <h4>{{musica.artist.name}}- {{musica.title}}</h4>
-        <audio controls>
-            <source src="{{musica.preview}}" type="audio/mpeg">
-        </audio>
         <br>
     {%endfor %}
 </body>

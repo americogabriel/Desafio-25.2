@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <img src="{{musica.album.cover_medium}}">
+        <h2>Artista: {{musica.artist.name}}</h2>
+        <h2>Titúlo da obra: {{musica.title}}</h2>
+        <h2>Duração: {{musica.duration}} segundos</h2>
+        <audio controls>
+            <source src="{{musica.preview}}" type="audio/mpeg">
+        </audio>
+        <h2>Link Deezer: <a href="{{musica.link}}">{{musica.link}}</a></h2>
+    </div>
+    <div class="classificacao">
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+        </form>
+    </div>
+</body>
+</html>
